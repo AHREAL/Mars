@@ -1,16 +1,23 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {DefinePlugin} = require('webpack');
+const SourcePath = path.join(__dirname, '..', 'src');
+const DistPath = path.join(__dirname, '..', 'dist');
 
 module.exports = {
-  entry: path.join(__dirname, '..', 'src', 'index.tsx'),
+  entry: path.join(SourcePath, 'index.tsx'),
   output: {
-    path: path.join(__dirname, '..', 'dist'),
+    path: DistPath,
     filename: '[contenthash].js',
     clean: true,
   },
   resolve: {
-    extensions: ['.js', '.tsx', '.jsx'],
+    extensions: ['.js', '.ts', '.jsx', '.tsx'],
+    alias: {
+      '@': path.join(SourcePath),
+      '@cpn': path.join(SourcePath, 'components', 'index.ts'),
+      '@page': path.join(SourcePath, 'pages', 'index.ts'),
+    },
   },
   module: {
     rules: [
