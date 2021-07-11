@@ -2,7 +2,7 @@ import React from 'react';
 import {BrowserRouter} from 'react-router-dom';
 import {CssBaseline} from '@material-ui/core';
 import {Layout} from '@cpn';
-import Router from './Router';
+import Router from '@router';
 
 const App = () => (
   <BrowserRouter>

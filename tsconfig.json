@@ -15,6 +15,18 @@
       ],
       "@page": [
         "./src/pages/index"
+      ],
+      "@page/*": [
+        "./src/pages/*"
+      ],
+      "@hook": [
+        "./src/hooks/index"
+      ],
+      "@router": [
+        "./src/router/index"
+      ],
+      "@router/*": [
+        "./src/router/*"
       ]
     },
     "esModuleInterop": true,

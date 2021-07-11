@@ -16,14 +16,16 @@ module.exports = {
     extensions: ['.js', '.ts', '.jsx', '.tsx'],
     alias: {
       '@': path.join(SourcePath),
-      '@cpn': path.join(SourcePath, 'components', 'index.ts'),
-      '@page': path.join(SourcePath, 'pages', 'index.ts'),
+      '@cpn': path.join(SourcePath, 'components'),
+      '@page': path.join(SourcePath, 'pages'),
+      '@hook': path.join(SourcePath, 'hooks'),
+      '@router': path.join(SourcePath, 'router'),
     },
   },
   module: {
     rules: [
       {
-        test: /\.(js|jsx|tsx)$/,
+        test: /\.(js|jsx|tsx|ts)$/,
         loader: 'babel-loader',
       },
       {

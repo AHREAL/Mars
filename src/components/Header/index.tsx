@@ -2,6 +2,7 @@ import React, {FunctionComponent} from 'react';
 import {NavLink, useHistory} from 'react-router-dom';
 import {Box, AppBar, Toolbar, Container, Typography} from '@material-ui/core';
 import {makeStyles} from '@material-ui/styles';
+import {useNav} from '@/hooks';
 
 const useStyles = makeStyles({
   navActive: {
@@ -35,6 +36,7 @@ const Link:FunctionComponent<{to:string}> = (props) => {
 const Cpn = () => {
   const history = useHistory();
   const classes = useStyles();
+  const {navs} = useNav();
   const toMainPage = () =>{
     history.push('/');
   };
@@ -49,9 +51,11 @@ const Cpn = () => {
               <Typography variant="subtitle1">即时通讯、音视频、Web前端开发</Typography>
             </Box>
             <Box>
-              <Link to="/">首页</Link>
-              <Link to="/archive">归档</Link>
-              {/* <Link to="/about">关于</Link> */}
+              {
+                navs.filter((i)=>!i.hideNav).map((i)=>(
+                  <Link to={i.path} key={i.path}>{i.name}</Link>
+                ))
+              }
             </Box>
           </Toolbar>
         </Box>
