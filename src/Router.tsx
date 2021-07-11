@@ -1,6 +1,6 @@
 import React from 'react';
 import {Route, Switch} from 'react-router-dom';
-import {Main, Blog} from '@page';
+import {Main, Blog, Archive} from '@page';
 
 const Router = () => {
   return (
@@ -10,6 +10,9 @@ const Router = () => {
       </Route>
       <Route path="/blog/:id" exact>
         <Blog/>
+      </Route>
+      <Route path="/archive" exact>
+        <Archive/>
       </Route>
     </Switch>
   );
