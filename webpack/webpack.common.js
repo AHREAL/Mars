@@ -10,6 +10,7 @@ module.exports = {
     path: DistPath,
     filename: '[contenthash].js',
     clean: true,
+    publicPath: '/',
   },
   resolve: {
     extensions: ['.js', '.ts', '.jsx', '.tsx'],

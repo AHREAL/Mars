@@ -36,7 +36,7 @@ const Cpn = () => {
         <Box py={2}>
           <Toolbar disableGutters>
             <Box sx={{flexGrow: 1}}>
-              <Typography variant="h4">Allen | 深圳</Typography>
+              <Typography variant="h4"> Allen 🚬 | 深圳 </Typography>
               <Typography variant="subtitle1">即时通讯、音视频、Web前端开发</Typography>
             </Box>
             <Box>
