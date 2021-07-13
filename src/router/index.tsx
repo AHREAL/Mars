@@ -11,7 +11,7 @@ const Router = () => {
             <Route key={i.path} path={i.path} exact component={i.component}/>
           ))
         }
-        <Route path="/admin" exact>
+        <Route path="/admin">
           {
             Admin.map((i)=>(
               <Route key={i.path} path={i.path} exact component={i.component}/>

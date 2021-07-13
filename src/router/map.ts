@@ -21,7 +21,7 @@ const Front:Routes = [
     component: React.lazy(()=>import('@page/front/Archive')),
   },
   {
-    name: '帖子',
+    name: '博客',
     path: '/blog/:id',
     component: React.lazy(()=>import('@page/front/Blog')),
     hideNav: true,
@@ -31,9 +31,14 @@ const Front:Routes = [
 const Admin:Routes = [
   {
     name: '登录',
-    path: '/admin/login',
+    path: '/admin',
     component: React.lazy(()=>import('@page/admin/Login')),
     hideNav: true,
+  },
+  {
+    name: '博客',
+    path: '/admin/blog-list',
+    component: React.lazy(()=>import('@page/admin/BlogList')),
   },
 ];
 
