@@ -6,7 +6,7 @@ const Cpn:FunctionComponent = (props) => {
   return (
     <React.Fragment>
       <Header/>
-      <Container maxWidth="md">
+      <Container>
         <Box py={2}>
           {props.children as ReactChildren}
         </Box>

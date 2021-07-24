@@ -40,6 +40,11 @@ const Admin:Routes = [
     path: '/admin/blog-list',
     component: React.lazy(()=>import('@page/admin/BlogList')),
   },
+  {
+    name: '博客编辑',
+    path: '/admin/blog-edit',
+    component: React.lazy(()=>import('@page/admin/BlogEdit')),
+  },
 ];
 
 export {

@@ -12,9 +12,7 @@ const useStyles = makeStyles({
   nav: {
     'textDecoration': 'none',
     'fontSize': 15,
-    '&:visited': {
-      color: '#202020',
-    },
+    'color': '#202020',
   },
   main: {
     'cursor': 'pointer',
@@ -42,8 +40,8 @@ const Cpn = () => {
   };
 
   return (
-    <AppBar color="inherit" position="sticky">
-      <Container maxWidth="md">
+    <AppBar color="inherit" position="static">
+      <Container>
         <Box py={2}>
           <Toolbar disableGutters>
             <Box sx={{flexGrow: 1}} onClick={toMainPage} className={classes.main}>
