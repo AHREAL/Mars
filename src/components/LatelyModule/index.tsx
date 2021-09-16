@@ -1,21 +1,10 @@
 import React, {FunctionComponent} from 'react';
-import {Paper, Typography, Divider, Box, makeStyles} from '@material-ui/core';
-
-const useStyle = makeStyles({
-  item: {
-    'cursor': 'pointer',
-    '&:hover': {
-      color: 'primary.main',
-    },
-  },
-});
 
 const Item:FunctionComponent = (props) => {
-  const classes = useStyle();
   return (
-    <Box pt={1} className={classes.item}>
+    <div pt={1} className={classes.item}>
       <Typography>{props.children}</Typography>
-    </Box>
+    </div>
   );
 };
 

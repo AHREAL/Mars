@@ -43,6 +43,12 @@ module.exports = {
           'less-loader',
         ],
       },
+      {
+        test: /\.(png|ttf|svg|eot|woff2|woff)$/,
+        use: [
+          'url-loader',
+        ],
+      },
     ],
   },
   plugins: [

@@ -1,5 +1,4 @@
 import React, {FunctionComponent} from 'react';
-import {Box, Divider, makeStyles, Paper, Typography} from '@material-ui/core';
 
 const useStyle = makeStyles({
   item: {

@@ -1,12 +1,11 @@
 import React from 'react';
 import {BrowserRouter} from 'react-router-dom';
-import {CssBaseline} from '@material-ui/core';
 import {Layout} from '@cpn';
 import Router from '@router';
+import 'semantic-ui-css/semantic.min.css';
 
 const App = () => (
   <BrowserRouter>
-    <CssBaseline/>
     <Layout>
       <Router/>
     </Layout>
