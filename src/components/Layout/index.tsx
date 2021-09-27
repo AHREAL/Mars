@@ -1,15 +1,13 @@
 import React, {FunctionComponent, ReactChildren} from 'react';
 import Header from '../Header';
+import Footer from '../Footer';
 
 const Cpn:FunctionComponent = (props) => {
   return (
     <React.Fragment>
       <Header/>
-      <div>
-        <div>
-          {props.children as ReactChildren}
-        </div>
-      </div>
+      {props.children as ReactChildren}
+      <Footer/>
     </React.Fragment>
   );
 };

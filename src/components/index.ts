@@ -1,12 +1,12 @@
 import Layout from './Layout';
-import BlogCard from './BlogCard';
+import Blog from './Blog';
 // import TypeModule from './TypeModule';
 // import LatelyModule from './LatelyModule';
 // import MdEditor from './MdEditor';
 
 export {
   Layout,
-  BlogCard,
+  Blog,
   // TypeModule,
   // LatelyModule,
   // MdEditor,

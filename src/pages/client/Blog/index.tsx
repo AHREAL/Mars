@@ -1,93 +1,76 @@
-import React, {FunctionComponent} from 'react';
-import {Paper, Typography, Box, Grid} from '@material-ui/core';
-import {TreeView, TreeItem, TreeItemProps} from '@material-ui/lab';
-import {FiberManualRecord} from '@material-ui/icons';
+import React, {useState, useCallback, useLayoutEffect} from 'react';
+import {Container, Sidebar, Segment, Icon, Menu} from 'semantic-ui-react';
+import {Blog, Layout} from '@/components';
+import {useMarkdown2Html} from '@/hooks';
+import data from './data';
+import {IBlogHeader} from '@/types';
 
-const Content = () => {
-  return (
-    <Paper>
-      <Box p={2}>
-        <Typography variant="h6">类型的逆变与协变</Typography>
-        <Typography color="textSecondary">2021年5月31日 | TypeScript</Typography>
-        <Box mt={2}>
-          <Typography variant="h6">
-            标题A
-          </Typography>
-          <Typography>
-            内容A内容A内容A内容A内容A内容A内容A内容A内容A内容A内容A内容A
-          </Typography>
-          <Typography variant="h6">
-            标题B
-          </Typography>
-          <Typography>
-            内容B内容B内容B内容B内容B内容B内容B内容B内容B内容B内容B内容B内容B内容B
-          </Typography>
-          <Typography variant="h6">
-            标题C
-          </Typography>
-        </Box>
-      </Box>
-    </Paper>
-  );
-};
-
-const CatalogueItem:FunctionComponent<TreeItemProps> = (props) => {
-  const Label = (
-    <Typography>
-      <Box fontSize="fontSize" component="span">
-        {props.label}
-      </Box>
-    </Typography>
-  );
-
-  return (
-    <TreeItem {...props} label={Label}/>
-  );
-};
-
-const Catalogue = () => {
-  return (
-    <Paper>
-      <Box p={2}>
-        <TreeView
-          expanded={['a', 'e', 'i', 'l']}
-          defaultCollapseIcon={<FiberManualRecord style={{fontSize: 8}}/>}
-          defaultEndIcon={<FiberManualRecord style={{fontSize: 8}}/>}>
-          <CatalogueItem nodeId='a' label="前言">
-            <CatalogueItem nodeId='b' label="前言"/>
-            <CatalogueItem nodeId='c' label="工程化"/>
-          </CatalogueItem>
-          <CatalogueItem nodeId='e' label="CLI工具分析">
-            <CatalogueItem nodeId='f' label="构建"/>
-            <CatalogueItem nodeId='g' label="质量"/>
-            <CatalogueItem nodeId='h' label="模板"/>
-            <CatalogueItem nodeId='i' label="ESLINT">
-              <CatalogueItem nodeId='j' label="创建工具类"/>
-              <CatalogueItem nodeId='k' label="工测试CLI"/>
-            </CatalogueItem>
-          </CatalogueItem>
-          <CatalogueItem nodeId='l' label="构建模块">
-            <CatalogueItem nodeId='m' label="配置通用Webpack"/>
-            <CatalogueItem nodeId='n' label="解决依赖"/>
-          </CatalogueItem>
-        </TreeView>
-      </Box>
-    </Paper>
-  );
-};
+interface IHeaderScroll {
+  offsetTop?: number,
+  dom?: HTMLElement | null,
+  id: string,
+}
 
 const Page = () => {
+  const {html, headers} = useMarkdown2Html({content: data});
+  const [headerScroll, setHeaderScroll] = useState<IHeaderScroll[]>([]);
+  const [visible, setVisible] = useState(false);
+  const [activeIndex, setActiveIndex] = useState('');
+
+  const handleScroll = useCallback(
+      () => {
+        if (!visible) return;
+        const curScrollTop = document.documentElement.scrollTop;
+        const header = headerScroll.find((i)=>((i.offsetTop || 0) + 50) >= curScrollTop) || headerScroll[headerScroll.length-1];
+        setActiveIndex(header.id);
+      },
+      [visible, headerScroll],
+  );
+  const onItemClick = (item:IBlogHeader) => {
+    setActiveIndex(item.id);
+  };
+
+  useLayoutEffect(() => {
+    handleScroll();
+    document.body.onscroll = handleScroll;
+    return () => {
+      document.body.onscroll = null;
+    };
+  }, [visible, headerScroll]);
+
+  useLayoutEffect(() => {
+    const _headerScrollTop = headers.map((i)=>{
+      const headerDom = document.getElementById(i.id);
+      return {
+        offsetTop: headerDom?.offsetTop,
+        dom: headerDom,
+        id: i.id,
+      };
+    });
+    setHeaderScroll(_headerScrollTop);
+  }, [headers]);
   return (
-    <Box>
-      <Grid container spacing={2}>
-        <Grid item xs={12} md={9}>
-          <Content/>
-        </Grid>
-        <Grid item md={3}>
-          <Catalogue/>
-        </Grid>
-      </Grid>
-    </Box>
+    <React.Fragment>
+      <Sidebar.Pushable as={Segment} className="transform-none">
+        <div id="fuck">
+          <Sidebar as={Menu} vertical fixed="right" visible={visible} direction="right" className="z-3" animation="overlay">
+            {
+              headers.map((i)=>(
+                <Menu.Item href={'#' + i.id} active={activeIndex == i.id} key={i.id} onClick={()=>onItemClick(i)}>{i.id}</Menu.Item>
+              ))
+            }
+          </Sidebar>
+          <Sidebar.Pusher>
+            <Layout>
+              <Container text>
+                <Blog blog={{content: html}}/>
+              </Container>
+            </Layout>
+          </Sidebar.Pusher>
+        </div>
+      </Sidebar.Pushable>
+      <div className="fixed bottom-10 right-10 z-3" onClick={()=>setVisible(!visible)}><Icon color="blue" name={visible ? 'close' :'list'}/></div>
+    </React.Fragment>
   );
 };
 
