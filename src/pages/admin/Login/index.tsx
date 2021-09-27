@@ -1,37 +1,15 @@
-import React, {useState} from 'react';
-import {Card, CardActions, CardContent, Button, makeStyles, Box, Typography, TextField} from '@material-ui/core';
-
-const useStyle = makeStyles({
-  root: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  card: {
-    width: 300,
-  },
-});
+import React from 'react';
+import {Card, Input, Button} from 'antd';
 
 const Page = () => {
-  const classes = useStyle();
-  const [password, setPassword] = useState('');
-  const login = () => {
-    console.log(password);
-  };
   return (
-    <Box className={classes.root} pt={4}>
-      <Card className={classes.card}>
-        <CardContent>
-          <Typography variant="h6" align="center">ADMIN</Typography>
-          <Box mt={2}>
-            <TextField type="password" value={password} onChange={(e)=>setPassword(e.target.value)} fullWidth label="密码" variant="outlined" size="small"/>
-          </Box>
-        </CardContent>
-        <CardActions className={classes.root}>
-          <Button variant="contained" color="primary" onClick={login}>登录</Button>
-        </CardActions>
+    <div className="h-screen w-screen flex items-center justify-center">
+      <Card title="请输入密码" className="w-96" actions={[
+        <Button key="ok" type="primary">确认</Button>,
+      ]}>
+        <Input/>
       </Card>
-    </Box>
+    </div>
   );
 };
 

@@ -21,6 +21,7 @@
     ],
     "rules": {
         "react/prop-types": "off",
-        "max-len": "off"
+        "max-len": "off",
+        "react/display-name": "off"
     }
 }

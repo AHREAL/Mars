@@ -34,9 +34,14 @@ const Front:Routes = [
 const Admin:Routes = [
   {
     name: '登录',
-    path: '/admin',
+    path: '/admin/login',
     component: React.lazy(()=>import('@page/admin/Login')),
     hideNav: true,
+  },
+  {
+    name: '首页',
+    path: '/admin',
+    component: React.lazy(()=>import('@page/admin/Home')),
   },
   {
     name: '博客',
@@ -44,10 +49,16 @@ const Admin:Routes = [
     component: React.lazy(()=>import('@page/admin/BlogList')),
   },
   {
-    name: '博客编辑',
-    path: '/admin/blog-edit',
-    component: React.lazy(()=>import('@page/admin/BlogEdit')),
+    name: '分类',
+    path: '/admin/type-list',
+    component: React.lazy(()=>import('@/pages/admin/TypeList')),
   },
+  // {
+  //   name: '博客编辑',
+  //   path: '/admin/blog-edit',
+  //   component: React.lazy(()=>import('@page/admin/BlogEdit')),
+  //   hideNav: true,
+  // },
 ];
 
 export {
