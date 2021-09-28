@@ -25,6 +25,7 @@
   "homepage": "https://github.com/AHREAL/Mars#readme",
   "dependencies": {
     "antd": "^4.16.13",
+    "axios": "^0.21.4",
     "easymde": "^2.15.0",
     "github-markdown-css": "^4.0.0",
     "highlight.js": "^11.2.0",
