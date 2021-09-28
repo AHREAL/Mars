@@ -4,7 +4,7 @@ import React, {useState, useContext, useEffect, useCallback, useMemo} from 'reac
 const Page = () => {
   return (
     <AdminLayout>
-      我是首页
+      首页
     </AdminLayout>
   );
 };

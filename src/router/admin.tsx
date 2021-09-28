@@ -1,11 +1,12 @@
 import React, {Suspense} from 'react';
 import {Route} from 'react-router-dom';
 import {Admin} from '@router/map';
+import {Loading} from '@cpn';
 import 'antd/dist/antd.css';
 
 const Router = () => {
   return (
-    <Suspense fallback={<div>loading...</div>}>
+    <Suspense fallback={<Loading/>}>
       <Route path="/admin">
         {
           Admin.map((i)=>(

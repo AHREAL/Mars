@@ -53,12 +53,18 @@ const Admin:Routes = [
     path: '/admin/type-list',
     component: React.lazy(()=>import('@/pages/admin/TypeList')),
   },
-  // {
-  //   name: '博客编辑',
-  //   path: '/admin/blog-edit',
-  //   component: React.lazy(()=>import('@page/admin/BlogEdit')),
-  //   hideNav: true,
-  // },
+  {
+    name: '博客编辑',
+    path: '/admin/blog-edit/:id',
+    component: React.lazy(()=>import('@page/admin/BlogEdit')),
+    hideNav: true,
+  },
+  {
+    name: '博客创建',
+    path: '/admin/blog-create',
+    component: React.lazy(()=>import('@page/admin/BlogEdit')),
+    hideNav: true,
+  },
 ];
 
 export {

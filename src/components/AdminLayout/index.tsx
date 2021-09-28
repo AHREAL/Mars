@@ -40,7 +40,7 @@ const Cpn: React.FC = ({children}) => {
       <Content className="p-14">
         <div>{children}</div>
       </Content>
-      <Footer className="text-center bg-white">Ant Design ©2018 Created by Ant UED</Footer>
+      <Footer className="text-center bg-white">Mars ©2021 Created by Allen</Footer>
     </Layout>
   );
 };

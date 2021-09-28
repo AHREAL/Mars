@@ -3,8 +3,8 @@ import SimpleMDE from 'react-simplemde-editor';
 import 'easymde/dist/easymde.min.css';
 
 interface MdEditorProps {
-  value:string
-  onChange:(value:string)=>void
+  value?:string
+  onChange?:(value:string)=>void
 }
 
 const Cpn:FunctionComponent<MdEditorProps> = (props) => {

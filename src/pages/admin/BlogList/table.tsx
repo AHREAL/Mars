@@ -1,7 +1,6 @@
-import React, {useState, useContext, useEffect, useCallback, useMemo} from 'react';
-import {Table, Tag, Space, Button} from 'antd';
+import React, {FC} from 'react';
+import {Table, Space, Button} from 'antd';
 import {IBlog} from '@/types';
-
 
 const columns = [
   {
@@ -20,6 +19,11 @@ const columns = [
     key: 'desc',
   },
   {
+    title: '类别',
+    dataIndex: 'type',
+    key: 'type',
+  },
+  {
     title: 'Action',
     key: 'action',
     render: (text, record:IBlog) => (
@@ -30,25 +34,12 @@ const columns = [
   },
 ];
 
-const data = [
-  {
-    id: '1',
-    title: 'react',
-    desc: 'react指南',
-    content: 'react指南',
-    type: [],
-    createTime: 123,
-    updateTime: 123,
-  },
-  {
-    id: '2',
-    title: 'vue',
-    desc: 'vue指南',
-    content: 'vue指南',
-    type: [],
-    createTime: 123,
-    updateTime: 123,
-  },
-];
+interface IProps {
+  dataSource:IBlog[]
+}
 
-export default <Table columns={columns} dataSource={data} />;
+const Cpn: FC<IProps> = ({dataSource}) => {
+  return <Table columns={columns} dataSource={dataSource} />;
+};
+
+export default Cpn;

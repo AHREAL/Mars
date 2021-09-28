@@ -1,9 +1,8 @@
 import Layout from './Layout';
 import Blog from './Blog';
 import AdminLayout from './AdminLayout';
-// import TypeModule from './TypeModule';
-// import LatelyModule from './LatelyModule';
-// import MdEditor from './MdEditor';
+import MdEditor from './MdEditor';
+import Loading from './Loading';
 
 export {
   Layout,
@@ -11,5 +10,6 @@ export {
   AdminLayout,
   // TypeModule,
   // LatelyModule,
-  // MdEditor,
+  MdEditor,
+  Loading,
 };

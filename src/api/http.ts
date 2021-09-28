@@ -4,7 +4,7 @@ import {API_HOST} from '../config';
 
 type TMethod = 'GET' | 'POST' | 'PUT' | 'DELETE'
 
-const request = (url:string, method:TMethod, arg = {}, opt: AxiosRequestConfig) => {
+const request = (url:string, method:TMethod, arg = {}, opt?: AxiosRequestConfig) => {
   return new Promise((resolve, reject)=>{
     axios({
       baseURL: API_HOST,
@@ -24,25 +24,26 @@ const request = (url:string, method:TMethod, arg = {}, opt: AxiosRequestConfig) 
           break;
       }
     }).catch((err)=>{
-      message.error('请求发生错误，请联系客服');
+      message.error('请求发生错误');
+      console.error(err);
       reject(err);
     });
   });
 };
 
-const get = (url:string, params:any, opt:AxiosRequestConfig) => {
+const get = (url:string, params?:any, opt?:AxiosRequestConfig) => {
   return request(url, 'GET', params, opt);
 };
 
-const post = (url:string, data:any, opt:AxiosRequestConfig) => {
+const post = (url:string, data?:any, opt?:AxiosRequestConfig) => {
   return request(url, 'POST', data, opt);
 };
 
-const put = (url:string, data:any, opt:AxiosRequestConfig) => {
+const put = (url:string, data?:any, opt?:AxiosRequestConfig) => {
   return request(url, 'PUT', data, opt);
 };
 
-const del = (url:string, data:any, opt:AxiosRequestConfig) => {
+const del = (url:string, data?:any, opt?:AxiosRequestConfig) => {
   return request(url, 'DELETE', data, opt);
 };
 
