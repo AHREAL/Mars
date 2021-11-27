@@ -1,8 +1,13 @@
 module.exports = {
-  purge: [
-    './dist/**/*.html',
-    './dist/**/*.js',
-  ],
+  purge: {
+    enabled: true,
+    content: [
+      './public/**/*.html',
+      './src/**/*.js',
+      './src/**/*.tsx',
+      './src/**/*.ts',
+    ],
+  },
   important: true,
   darkMode: false, // or 'media' or 'class'
   theme: {
@@ -17,4 +22,7 @@ module.exports = {
     extend: {},
   },
   plugins: [],
+  corePlugins: {
+    preflight: false,
+  },
 };

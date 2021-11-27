@@ -1,11 +1,22 @@
 export interface IBlog {
   title:string
   desc:string
-  id:string
+  _id:string
   content:string
   type:string[]
-  createTime:number
-  updateTime:number
+  typeInfo:ITypeInfoItem[]
+  created:number
+  updated:number
+}
+
+export interface ITypeInfoItem {
+  id:string
+  name:string
+};
+
+export interface IType {
+  name:string
+  _id:string
 }
 
 export interface IBlogHeader {

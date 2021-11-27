@@ -14,7 +14,8 @@ const hook = ({content}:IOpt) => {
   const [headers, setHeaders] = useState<IBlogHeader[]>([]);
   const [html, setHtml] = useState('');
   useEffect(()=>{
-    const md = markDownIt({
+    const MdParser = markDownIt({
+      breaks: true,
       highlight: function(str, lang) {
         if (lang && highlight.getLanguage(lang)) {
           try {
@@ -23,11 +24,11 @@ const hook = ({content}:IOpt) => {
                    '</code></pre>';
           } catch (__) {}
         }
-        return '<pre class="hljs"><code>' + md.utils.escapeHtml(str) + '</code></pre>';
+        return '<pre class="hljs"><code>' + MdParser.utils.escapeHtml(str) + '</code></pre>';
       },
     });
 
-    md.use(markDownItAnchor, {
+    MdParser.use(markDownItAnchor, {
       slugify: (id:string) => {
         return uslug(id);
       },
@@ -41,8 +42,8 @@ const hook = ({content}:IOpt) => {
         ]);
       },
     });
-    setHtml(md.render(content));
-  }, []);
+    setHtml(MdParser.render(content));
+  }, [content]);
   return {
     html,
     headers,

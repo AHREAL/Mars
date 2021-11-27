@@ -1,19 +1,23 @@
 import React, {Suspense} from 'react';
+import {ConfigProvider} from 'antd';
 import {Route} from 'react-router-dom';
 import {Admin} from '@router/map';
 import {Loading} from '@cpn';
-import 'antd/dist/antd.css';
+import zhCN from 'antd/lib/locale/zh_CN';
+import '../style/admin.css';
 
 const Router = () => {
   return (
     <Suspense fallback={<Loading/>}>
-      <Route path="/admin">
-        {
-          Admin.map((i)=>(
-            <Route key={i.path} path={i.path} exact component={i.component}/>
-          ))
-        }
-      </Route>
+      <ConfigProvider locale={zhCN}>
+        <Route path="/admin">
+          {
+            Admin.map((i)=>(
+              <Route key={i.path} path={i.path} exact component={i.component}/>
+            ))
+          }
+        </Route>
+      </ConfigProvider>
     </Suspense>
   );
 };

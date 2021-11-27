@@ -1,10 +1,10 @@
 import {AdminLayout} from '@/components';
-import React, {useState, useContext, useEffect, useCallback, useMemo} from 'react';
+import React from 'react';
 
 const Page = () => {
   return (
     <AdminLayout>
-      首页
+      Hello Allen 😎
     </AdminLayout>
   );
 };

@@ -2,6 +2,7 @@ import React, {Suspense} from 'react';
 import {Route} from 'react-router-dom';
 import {Front} from '@router/map';
 import {Loading} from '@cpn';
+import '../style/client.css';
 
 const Router = () => {
   return (

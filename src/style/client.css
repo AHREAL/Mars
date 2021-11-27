@@ -1,0 +1,6 @@
+@import "semantic-ui-css/semantic.min.css";
+
+#root {
+  overflow-x: hidden;
+  width: 100vw;
+}
